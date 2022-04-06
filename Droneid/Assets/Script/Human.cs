@@ -10,7 +10,7 @@ public class Human : MonoBehaviour
     private Rigidbody rb;
     private Animator animator;
     private SphereCollider sphereCollider;
-
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,6 +29,7 @@ public class Human : MonoBehaviour
             animator.enabled = false;
             rb.isKinematic = true;
             move = Vector3.Distance(transform.localPosition, new Vector3(0, 0, 0)) <= 0.01 ? false : true;
+            Invoke("BoolChange", 2f);
             
 
         }
@@ -37,7 +38,7 @@ public class Human : MonoBehaviour
             gameObject.transform.parent = null;
         }
     }
-
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Engel")

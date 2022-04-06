@@ -20,17 +20,17 @@ public class DroneMovement : DroneMovementScript {
 		{
 			MovementUpDown();
 			MovementLeftRight();
-			Rotation();
+			//Rotation();
 			MovementForward();
 			BasicDroneHoverAndRotation(); //this method applies all the forces and rotations to the drone.
 		}
 	}
 
     void Update () {
-        RotationUpdateLoop_TrickRotation(); //applies rotation to the drone it self when doing the barrel roll trick, does NOT trigger the animation
-        Animations(); //part where animations are triggered
-        DroneSound(); //sound producing stuff
-        CameraCorrectPickAndTranslatingInputToWSAD(); //setting input for keys, translating joystick, mobile inputs as WSAD (depending on which is turned on)
+        //RotationUpdateLoop_TrickRotation(); //applies rotation to the drone it self when doing the barrel roll trick, does NOT trigger the animation
+        //Animations(); //part where animations are triggered
+        ////DroneSound(); //sound producing stuff
+        //CameraCorrectPickAndTranslatingInputToWSAD(); //setting input for keys, translating joystick, mobile inputs as WSAD (depending on which is turned on)
     }
 
 }

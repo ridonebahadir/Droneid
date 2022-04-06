@@ -937,20 +937,20 @@ namespace DroneController
                     ourDrone.AddRelativeForce(Vector3.right * floating.Horizontal * sideMovementAmount*slideSpeed);
                     tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, -wantedSideTilt * floating.Horizontal, ref tiltVelocitySideways, tiltMovementSpeed);
                 //StartCoroutine("Left_Passage");
-                if (A)
-                {
-                    ourDrone.AddRelativeForce(Vector3.right * Horizontal_A * sideMovementAmount);
-                    tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, -wantedSideTilt * Horizontal_A, ref tiltVelocitySideways, tiltMovementSpeed);
-                }
-                if (D)
-                {
-                    ourDrone.AddRelativeForce(Vector3.right * Horizontal_D * sideMovementAmount);
-                    tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, -wantedSideTilt * Horizontal_D, ref tiltVelocitySideways, tiltMovementSpeed);
-                }
-                if (!A && !D)
-                {
-                    tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, 0, ref tiltVelocitySideways, tiltNoMovementSpeed);
-                }
+                //if (A)
+                //{
+                //    ourDrone.AddRelativeForce(Vector3.right * Horizontal_A * sideMovementAmount);
+                //    tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, -wantedSideTilt * Horizontal_A, ref tiltVelocitySideways, tiltMovementSpeed);
+                //}
+                //if (D)
+                //{
+                //    ourDrone.AddRelativeForce(Vector3.right * Horizontal_D * sideMovementAmount);
+                //    tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, -wantedSideTilt * Horizontal_D, ref tiltVelocitySideways, tiltMovementSpeed);
+                //}
+                //if (!A && !D)
+                //{
+                //    tiltAmountSideways = Mathf.SmoothDamp(tiltAmountSideways, 0, ref tiltVelocitySideways, tiltNoMovementSpeed);
+                //}
             }
 
             /// <summary>
@@ -999,20 +999,20 @@ namespace DroneController
             {
                 ourDrone.AddRelativeForce(new Vector3(balance, 0,1) * forwardSpeed * movementForwardSpeed);
                 tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, wantedForwardTilt * forwardSpeed, ref tiltVelocityForward, tiltMovementSpeed);
-                if (W)
-                {
-                    ourDrone.AddRelativeForce(Vector3.forward * Vertical_W * movementForwardSpeed);
-                    tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, wantedForwardTilt * Vertical_W, ref tiltVelocityForward, tiltMovementSpeed);
-                }
-                if (S)
-                {
-                    ourDrone.AddRelativeForce(Vector3.forward * Vertical_S * movementForwardSpeed);
-                    tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, wantedForwardTilt * Vertical_S, ref tiltVelocityForward, tiltMovementSpeed);
-                }
-                if (!W && !S)
-                {
-                    tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, 0, ref tiltVelocityForward, tiltNoMovementSpeed);
-                }
+                //if (W)
+                //{
+                //    ourDrone.AddRelativeForce(Vector3.forward * Vertical_W * movementForwardSpeed);
+                //    tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, wantedForwardTilt * Vertical_W, ref tiltVelocityForward, tiltMovementSpeed);
+                //}
+                //if (S)
+                //{
+                //    ourDrone.AddRelativeForce(Vector3.forward * Vertical_S * movementForwardSpeed);
+                //    tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, wantedForwardTilt * Vertical_S, ref tiltVelocityForward, tiltMovementSpeed);
+                //}
+                //if (!W && !S)
+                //{
+                //    tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, 0, ref tiltVelocityForward, tiltNoMovementSpeed);
+                //}
             }
 
             #endregion
