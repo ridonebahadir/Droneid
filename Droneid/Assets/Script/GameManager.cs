@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public DroneMovement droneMovement;
     public SpawnWall spawnWall;
     public GameObject Confetti;
+    public Drone drone;
+    public GameObject[] laves;
     void Awake()
     {
         LevelsX = PlayerPrefs.GetFloat("ContentX");
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour
                     item.gameObject.SetActive(false);
                 }
                 Drone.transform.GetChild(1).gameObject.SetActive(true);
+                
                 droneMovement.droneObject = Drone.transform.GetChild(1);
                 break;
             case 6:
@@ -69,6 +72,7 @@ public class GameManager : MonoBehaviour
                     item.gameObject.SetActive(false);
                 }
                 Drone.transform.GetChild(2).gameObject.SetActive(true);
+                
                 droneMovement.droneObject = Drone.transform.GetChild(2);
                 break;
             case 9:
@@ -86,6 +90,7 @@ public class GameManager : MonoBehaviour
                     item.gameObject.SetActive(false);
                 }
                 Drone.transform.GetChild(3).gameObject.SetActive(true);
+                
                 droneMovement.droneObject = Drone.transform.GetChild(3);
                 break;
             default:

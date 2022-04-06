@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+
+
 
 public class Drone : MonoBehaviour
 {
     public GameObject[] pervane;
-    public GameObject[] lave;
+    public GameObject lave;
     private int health;
     public DroneMovement droneMovement;
     public Rigidbody rb;
@@ -24,7 +27,36 @@ public class Drone : MonoBehaviour
     public int degdi;
     public int humans;
     public GameObject Confetti;
+    public GameManager gameManager;
+    int currentLevel;
+    public GameObject mainCamera;
     //public GameObject capsule;
+    private void Start()
+    {
+        currentLevel = PlayerPrefs.GetInt("Level");
+        switch (currentLevel)
+        {
+            case 0:
+            case 1:
+            case 2:
+                lave = gameManager.laves[0];
+                break;
+            case 3:
+            case 4:
+            case 5:
+                lave = gameManager.laves[1];
+                break;
+            case 6:
+            case 7:
+            case 8:
+                lave = gameManager.laves[2];
+                break;
+            default:
+                break;
+        }
+       
+    }
+    bool shake;
     private void FixedUpdate()
     {
         if (gameObject.transform.position.z>=0)
@@ -34,29 +66,37 @@ public class Drone : MonoBehaviour
         if (CameraFollow)
         {
             //Camera.main.transform.eulerAngles = new Vector3(0, 0, 0);
-            Camera.main.transform.position = /*new Vector3(0, 0, 0);*/Vector3.Lerp(Camera.main.transform.position, CameraStart.transform.position, 1f * Time.deltaTime);
+            mainCamera.transform.position = /*new Vector3(0, 0, 0);*/Vector3.Lerp(mainCamera.transform.position, CameraStart.transform.position, 1f * Time.deltaTime);
             Invoke("Restart", 4f);
+        }
+        if (shake)
+        {
+            mainCamera.transform.DOShakeRotation(0.3f,2f,fadeOut:false);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Engel")
         {
+            shake = true;
+            Invoke("BoolChange",0.5f);
             health++;
             switch (health)
             {
                 case 1:
+                    droneMovement.balance = -0.2f;
                     pervane[0].transform.parent = null;
                     pervane[0].transform.position += Vector3.down * 30 * Time.deltaTime;
-                    lave[0].SetActive(true);
+                    lave.transform.GetChild(0).gameObject.SetActive(true);
                     break;
                 case 2:
+                    droneMovement.balance = 0.2f;
                     pervane[1].transform.parent = null;
                     pervane[1].transform.position += Vector3.down * 30 * Time.deltaTime;
-                    lave[1].SetActive(true);
+                    lave.transform.GetChild(1).gameObject.SetActive(true);
                     break;
                 case 3:
-                    lave[2].SetActive(true);
+                    lave.transform.GetChild(2).gameObject.SetActive(true);
                     droneCamera.enabled = false;
                     Invoke("Wait", 2.5f);
                     gameObject.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
@@ -96,6 +136,10 @@ public class Drone : MonoBehaviour
             Debug.Log("deðdi" + degdi);
             Invoke("Late", 0.3f);
         }
+    }
+    void BoolChange()
+    {
+        shake = false;
     }
      void Late()
     {

@@ -994,9 +994,10 @@ namespace DroneController
             /// <summary>
             /// Movement forwards and backwars and tilting
             /// </summary>
+            public float balance;
             public void MovementForward()
             {
-                ourDrone.AddRelativeForce(Vector3.forward * forwardSpeed * movementForwardSpeed);
+                ourDrone.AddRelativeForce(new Vector3(balance, 0,1) * forwardSpeed * movementForwardSpeed);
                 tiltAmountForward = Mathf.SmoothDamp(tiltAmountForward, wantedForwardTilt * forwardSpeed, ref tiltVelocityForward, tiltMovementSpeed);
                 if (W)
                 {

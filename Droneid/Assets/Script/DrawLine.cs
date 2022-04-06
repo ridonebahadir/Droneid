@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DrawLine : MonoBehaviour
 {
-    public LineRenderer LineRenderer;
+    //public LineRenderer LineRenderer;
     public Transform Packet;
     public Transform Human;
     public List<GameObject> list;
@@ -27,12 +27,12 @@ public class DrawLine : MonoBehaviour
             if (dist<8)
             {
                 isMove = true;
-                LineRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f));
+                //LineRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f));
                 DrawLineStart();
                 Human.transform.parent = Packet.transform;
                 Human.GetComponent<Human>().move = true;
                 //Human.GetComponent<Animator>().SetBool("Hang", true);
-                Instantiate(thuder,Human);
+               Human.GetChild(5).gameObject.SetActive(true);
                
               
 
@@ -43,7 +43,7 @@ public class DrawLine : MonoBehaviour
             {
                 Human.GetComponent<Human>().breakk =false;
                
-                LineRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f, 0f));
+                //LineRenderer.material.SetColor("_Color", new Color(1f, 1f, 1f, 0f));
                 DrawLineStart();
                 
 
@@ -65,8 +65,8 @@ public class DrawLine : MonoBehaviour
 
         
         // set the position
-        LineRenderer.SetPosition(0, Packet.position);
-        LineRenderer.SetPosition(1, Human.position);
+        //LineRenderer.SetPosition(0, Packet.position);
+        //LineRenderer.SetPosition(1, Human.position);
 
 
         if ((Packet.transform.position.z>=88+(humanBetween * child))&&(child<list.Count))
