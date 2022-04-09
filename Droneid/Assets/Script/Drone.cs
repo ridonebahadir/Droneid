@@ -85,12 +85,14 @@ public class Drone : MonoBehaviour
             {
                 case 1:
                     droneMovement.balance = -0.2f;
+                    droneMovement.balanceDown = -0.5f;
                     pervane[0].transform.parent = null;
                     pervane[0].transform.position += Vector3.down * 30 * Time.deltaTime;
                     lave.transform.GetChild(0).gameObject.SetActive(true);
                     break;
                 case 2:
                     droneMovement.balance = 0.2f;
+                    droneMovement.balanceDown = -0.5f;
                     pervane[1].transform.parent = null;
                     pervane[1].transform.position += Vector3.down * 30 * Time.deltaTime;
                     lave.transform.GetChild(1).gameObject.SetActive(true);
